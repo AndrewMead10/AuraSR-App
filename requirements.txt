@@ -1,0 +1,4 @@
+aura-sr
+fastapi
+uvicorn
+Pillow
