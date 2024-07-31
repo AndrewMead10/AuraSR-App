@@ -1,24 +1,16 @@
 import io
 from fastapi import FastAPI, File, UploadFile, Request
-from fastapi.templating import Jinja2Templates
-from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, StreamingResponse
 from PIL import Image
 from aura_sr import AuraSR
 import uvicorn
 
-app = FastAPI()
+from fasthtml import FastHTML
+from fasthtml.common import *
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+app = FastHTML()
 
 aura_sr = None
-
-
-@app.on_event("startup")
-async def startup_event():
-    global aura_sr
-    aura_sr = AuraSR.from_pretrained("fal/AuraSR-v2")
 
 
 @app.get("/", response_class=HTMLResponse)
