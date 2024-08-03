@@ -1,4 +1,4 @@
 aura-sr
-fastapi
+python-fasthtml
 uvicorn
 Pillow
